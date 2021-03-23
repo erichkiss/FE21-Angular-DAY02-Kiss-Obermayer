@@ -1,23 +1,22 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, OnInit, DoCheck } from '@angular/core';
+import { cars } from '../array';
+import { NewCarComponent } from '../new-car/new-car.component';
 @Component({
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.scss']
 })
-export class HomePageComponent implements OnInit {
-  cars: Array<any> = [{
-    title: "BMW Supersport",
-    image: "../../assets/img/pexels-bmw.jpeg"
-  },{
-    title: "SLK Supersport",
-    image: "../../assets/img/pexels-mercedes.jpeg"
-  }
-];
-
+export class HomePageComponent implements OnInit, DoCheck {
+  cars = cars;
   constructor() { }
 
+  ngDoCheck(): void{
+    this.cars = new NewCarComponent().returnCars();
+  }
+
+
   ngOnInit(): void {
+    
   }
 
 }
