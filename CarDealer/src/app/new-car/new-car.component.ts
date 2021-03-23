@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { HomePageComponent } from '../home-page/home-page.component';
 
 @Component({
   selector: 'app-new-car',
@@ -19,7 +20,9 @@ export class NewCarComponent implements OnInit {
   onSubmit() {
     if (this.newCar.valid) {
       this.carData = this.newCar.value;
-      console.log(this.carData);
+      // console.log(this.carData);
+      new HomePageComponent().cars.push(this.carData);
+      console.log(new HomePageComponent().cars);
     }
   }
 
